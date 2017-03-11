@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  resources :interets
-  resources :experiences
-  resources :formations
+    get 'users/profil'
+    get 'user' => 'users#profil'
+    delete 'users/sign_out' => 'users/session#destroy'
+    resources :users do 
+        resources :formations
+        resources :experiences
+        resources :interets
+    end
+
+    resources :interets
+    resources :experiences
+    resources :formations
     get 'home/index'
 
     devise_for :users, controllers: { sessions: 'users/sessions' }
