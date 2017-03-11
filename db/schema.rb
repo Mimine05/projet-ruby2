@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311081556) do
+ActiveRecord::Schema.define(version: 20170311111513) do
+
+  create_table "etus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "experience_id"
+    t.index ["experience_id"], name: "index_etus_on_experience_id"
+    t.index ["user_id"], name: "index_etus_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "formations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  create_table "ftus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "formation_id"
+    t.index ["formation_id"], name: "index_ftus_on_formation_id"
+    t.index ["user_id"], name: "index_ftus_on_user_id"
+  end
+
+  create_table "interets", force: :cascade do |t|
+    t.string   "categorie"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "itus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "interet_id"
+    t.index ["interet_id"], name: "index_itus_on_interet_id"
+    t.index ["user_id"], name: "index_itus_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

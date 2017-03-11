@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :interets
+  resources :experiences
+  resources :formations
     get 'home/index'
 
     devise_for :users, controllers: { sessions: 'users/sessions' }

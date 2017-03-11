@@ -12,4 +12,14 @@ class User < ApplicationRecord
     def login
         @login || self.username || self.email
     end
+    
+    has_many :ftus
+	has_many :formations, through: :ftus
+    
+    has_many :etus
+	has_many :experiences, through: :etus
+    
+    has_many :itus
+	has_many :interets, through: :itus
 end
+
