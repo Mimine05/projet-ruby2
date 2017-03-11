@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+    get 'entreprises/profil'
+    get 'entreprise' => 'entreprises#profil'
+
+    devise_for :entreprises do
+    end
+
+
     get 'users/profil'
     get 'user' => 'users#profil'
 
