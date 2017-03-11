@@ -9,9 +9,15 @@
     </head>
 
     <body>
+       <%= link_to "Accueil", home_index_path %>
+       <%= link_to "Modifier mes informations", edit_user_registration_path %>
+       <%= link_to "Toutes les formations", formations_path %>
+       <%= link_to "Toutes les expériences", experiences_path %>
+       <%= link_to "Toutes les intérêts", interets_path %>
+       
         <% if user_signed_in? %>
 
-        <h4><%= link_to current_user.username, edit_user_registration_path %>, vous êtes connecté !</h4>
+        <h4><%= link_to current_user.username, users_profil_path %>, vous êtes connecté !</h4>
         <%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %>
 
         <% else %>
