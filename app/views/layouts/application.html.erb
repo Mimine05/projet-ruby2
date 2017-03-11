@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projet</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
+        <% if user_signed_in? %>
+
+        <h4><%= link_to current_user.username, edit_user_registration_path %>, vous êtes connecté !</h4>
+        <%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %>
+
+        <% else %>
+
+        <h1> Inscrivez ou connectez vous !</h1>
+        <%= link_to "Se connecter", new_user_session_path, :method => :get %>
+        <%= link_to "S'inscrire", new_user_registration_path, :method => :get %>
+
+        <% end %>
+
+        <%= yield %>
+    </body>
+</html>
