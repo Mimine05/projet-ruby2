@@ -1,0 +1,2 @@
+class Interet < ApplicationRecord
+end
