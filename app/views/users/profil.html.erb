@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Profil de <%= current_user.username %></h1>
+<h1>Profil de <%= @user.username %></h1>
 
 <table>
     <thead>
@@ -17,14 +17,14 @@
 
     <tbody>
         <h3>Formations</h3>
-        <% @user.formations.each do |formation| %>
+        <% @formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
             <td><%= formation.etablissement %></td>
             <td><%= formation.annee %></td>
             <td><%= formation.description %></td>
             <td><%= link_to 'Show', formation %></td>
-            <td><%= link_to 'Edit', edit_formation_path(formation) %></td>
+            <td><%= link_to 'Edit', edit_profil_formation_path(@user, formation) %></td>
             <td><%= link_to 'Destroy', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>

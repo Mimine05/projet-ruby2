@@ -13,13 +13,17 @@ Rails.application.routes.draw do
     resources :experiences
     resources :formations
     get 'home/index'
+    
+    resources :profil do 
+        resources :formations
+    end
 
     devise_for :users do
-        resources :users do 
+#        resources :users do 
             resources :formations
             resources :experiences
             resources :interets
-        end
+#        end
     end
 
     root to: 'home#index'

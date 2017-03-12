@@ -4,30 +4,43 @@
         <title>Projet</title>
         <%= csrf_meta_tags %>
 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
     <body>
-       <%= link_to "Accueil", home_index_path %>
-       <%= link_to "Modifier mes informations", edit_user_registration_path %>
-       <%= link_to "Toutes les formations", formations_path %>
-       <%= link_to "Toutes les expériences", experiences_path %>
-       <%= link_to "Toutes les intérêts", interets_path %>
-       
-        <% if user_signed_in? %>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="<%= root_path %>" class="navbar-brand">Accueil</a>
+                </div>
+                <div class="navbar-nav navbar-center">
+                    <li><a href="<%= formations_path %>" class="navbar-brand">Formations</a></li>
+                    <li><a href="<%= experiences_path %>" class="navbar-brand">Expériences</a></li>
+                    <li><a href="<%= interets_path %>" class="navbar-brand">Intérêts</a></li>
+                </div>
+                <div class="navbar-nav navbar-right">
+                    <% if user_signed_in? %>
+                    <li><a href="<%= edit_user_registration_path %>" class="navbar-brand">Mes infos persos</a></li>
+                    <li><a href="<%= users_profil_path %>" class="navbar-brand"><%= current_user.username %></a></li>
+                    <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %></li>
+                    <% else %>
+                    <li><%= link_to "S'inscrire", new_user_registration_path, :method => :get %></li>
+                    <li><%= link_to "Se connecter", new_user_session_path, :method => :get %></li>
+                    <% end %>
+                </div>
+            </div>
+        </div>
 
-        <h4><%= link_to current_user.username, users_profil_path %>, vous êtes connecté !</h4>
-        <%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %>
+        <div class="container"><%= yield %></div>
 
-        <% else %>
 
-        <h1> Inscrivez ou connectez vous !</h1>
-        <%= link_to "Se connecter", new_user_session_path, :method => :get %>
-        <%= link_to "S'inscrire", new_user_registration_path, :method => :get %>
+        <%= debug session[:auth] %>
 
-        <% end %>
-
-        <%= yield %>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </body>
 </html>
