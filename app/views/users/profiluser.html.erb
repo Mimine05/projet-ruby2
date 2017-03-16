@@ -17,12 +17,12 @@
 
     <tbody>
         <h3>Formations</h3>
-        <% @user.formations.each do |formation| %>
+        <% current_user.formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
-            <td><%= formation.etablissement %></td>
-            <td><%= formation.annee %></td>
-            <td><%= formation.description %></td>
+            <td><%= formation.ftus.where(user_id: current_user.id).first.etablissement %></td>
+            <td><%= formation.ftus.where(user_id: current_user.id).first.annee %></td>
+            <td><%= formation.ftus.where(user_id: current_user.id).first.description %></td>
             <td><%= link_to 'Afficher', formation %></td>
             <td><%= link_to 'Editer', edit_formation_path(formation) %></td>
             <td><%= link_to 'Supprimer', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -46,12 +46,12 @@
 
     <tbody>
         <h3>Expériences</h3>
-        <% @user.experiences.each do |experience| %>
+        <% current_user.experiences.each do |experience| %>
         <tr>
             <td><%= experience.name %></td>
-            <td><%= experience.lieu %></td>
-            <td><%= experience.annee %></td>
-            <td><%= experience.description %></td>
+            <td><%= experience.etus.where(user_id: current_user.id).first.lieu %></td>
+            <td><%= experience.etus.where(user_id: current_user.id).first.annee %></td>
+            <td><%= experience.etus.where(user_id: current_user.id).first.description %></td>
             <td><%= link_to 'Afficher', experience %></td>
             <td><%= link_to 'Editer', edit_experience_path(experience) %></td>
             <td><%= link_to 'Supprimer', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -73,9 +73,9 @@
 
     <tbody>
         <h3>Intérêts</h3>
-        <% @user.interets.each do |interet| %>
+        <% current_user.interets.each do |interet| %>
         <tr>
-            <td><%= interet.categorie %></td>
+            <td><%= interet.itus.where(user_id: current_user.id).first.categorie %></td>
             <td><%= interet.name %></td>
             <td><%= link_to 'Afficher', interet %></td>
             <td><%= link_to 'Editer', edit_interet_path(interet) %></td>

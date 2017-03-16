@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Année :</strong>
+    <%= @ftu.annee %>
+</p>
+<p>
+    <strong>Etablissement :</strong>
+    <%= @ftu.etablissement %>
+</p>
+<p>
+    <strong>Description :</strong>
+    <%= @ftu.description %>
+</p>
+
+<%= link_to 'Edit', edit_ftu_path(@ftu) %> |
+<%= link_to 'Back', ftus_path %>

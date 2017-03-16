@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+    resources :itus
+    resources :etus
+    resources :ftus
+
     get 'entreprises/profil'
     get 'entreprise' => 'entreprises#profil'
 
@@ -7,19 +11,27 @@ Rails.application.routes.draw do
 
     get 'users/profil'
     get 'user' => 'users#profil'
-    
+
     get 'users/profiluser'
     get 'user' => 'users#profiluser'
 
-    resources :interets
-    resources :experiences
-    resources :formations
+    resources :interets do
+        resources :itus
+    end
+    resources :experiences do
+        resources :etus
+    end
+
+    resources :formations do
+        resources :ftus
+    end
+    
     get 'home/index'
 
     devise_for :users do
-            resources :formations
-            resources :experiences
-            resources :interets
+        resources :formations
+        resources :experiences
+        resources :interets
     end
 
     root to: 'home#index'

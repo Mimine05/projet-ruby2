@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <td>Catégorie</td>
       <td>Nom</td>
       <th colspan="3"></th>
     </tr>
@@ -14,11 +13,10 @@
   <tbody>
     <% @interets.each do |interet| %>
       <tr>
-        <td><%= interet.categorie %></td>
         <td><%= interet.name %></td>
-        <td><%= link_to 'Show', interet %></td>
-        <td><%= link_to 'Edit', edit_interet_path(interet) %></td>
-        <td><%= link_to 'Destroy', interet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Afficher', interet %></td>
+        <td><%= link_to 'Editer', edit_interet_path(interet) %></td>
+        <td><%= link_to 'Supprimer', interet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Interet', new_interet_path %>
+<%= link_to 'Nouvel Intérêt', new_interet_path %>

@@ -40,6 +40,11 @@ class FormationsController < ApplicationController
     # PATCH/PUT /formations/1
     # PATCH/PUT /formations/1.json
     def update
+        
+        @user = current_user
+        
+        @formation.ftus.where(user_id: @user.id).first.update(annee: params[:annee], etablissement: params[:etablissement], description: params[:description] )
+        
         respond_to do |format|
             if @formation.update(formation_params)
                 format.html { redirect_to @formation, notice: 'Formation was successfully updated.' }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311223702) do
+ActiveRecord::Schema.define(version: 20170316213007) do
 
   create_table "entreprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -25,9 +25,6 @@ ActiveRecord::Schema.define(version: 20170311223702) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
-    t.string   "description"
-    t.string   "activite"
     t.index ["email"], name: "index_entreprises_on_email", unique: true
     t.index ["reset_password_token"], name: "index_entreprises_on_reset_password_token", unique: true
   end
@@ -35,37 +32,36 @@ ActiveRecord::Schema.define(version: 20170311223702) do
   create_table "etus", force: :cascade do |t|
     t.integer "user_id"
     t.integer "experience_id"
+    t.string  "description"
+    t.string  "lieu"
+    t.integer "annee"
     t.index ["experience_id"], name: "index_etus_on_experience_id"
     t.index ["user_id"], name: "index_etus_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "description"
-    t.string   "annee"
-    t.string   "lieu"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "formations", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "name"
-    t.string   "etablissement"
-    t.string   "annee"
-    t.string   "description"
   end
 
   create_table "ftus", force: :cascade do |t|
     t.integer "user_id"
     t.integer "formation_id"
+    t.string  "description"
+    t.string  "etablissement"
+    t.integer "annee"
     t.index ["formation_id"], name: "index_ftus_on_formation_id"
     t.index ["user_id"], name: "index_ftus_on_user_id"
   end
 
   create_table "interets", force: :cascade do |t|
-    t.string   "categorie"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170311223702) do
   create_table "itus", force: :cascade do |t|
     t.integer "user_id"
     t.integer "interet_id"
+    t.string  "categorie"
     t.index ["interet_id"], name: "index_itus_on_interet_id"
     t.index ["user_id"], name: "index_itus_on_user_id"
   end

@@ -6,9 +6,6 @@
     <thead>
         <tr>
             <td>Nom</td>
-            <td>Etablissement</td>
-            <td>Année d'obtention</td>
-            <td>Description</td>
             <td></td>
             <td></td>
             <td></td>
@@ -19,9 +16,6 @@
         <% @formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
-            <td><%= formation.etablissement %></td>
-            <td><%= formation.annee %></td>
-            <td><%= formation.description %></td>
             <td><%= link_to 'Show', formation %></td>
             <td><%= link_to 'Edit', edit_formation_path(formation) %></td>
             <td><%= link_to 'Destroy', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

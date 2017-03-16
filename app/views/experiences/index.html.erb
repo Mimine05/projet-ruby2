@@ -6,9 +6,6 @@
     <thead>
         <tr>
             <td>Nom</td>
-            <td>Entreprise</td>
-            <td>Dates</td>
-            <td>Description</td>
             <td></td>
             <td></td>
             <td></td>
@@ -19,9 +16,6 @@
         <% @experiences.each do |experience| %>
         <tr>
             <td><%= experience.name %></td>
-            <td><%= experience.lieu %></td>
-            <td><%= experience.annee %></td>
-            <td><%= experience.description %></td>
             <td><%= link_to 'Show', experience %></td>
             <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
             <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>

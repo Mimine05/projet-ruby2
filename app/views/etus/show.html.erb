@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Année :</strong>
+    <%= @etu.annee %>
+</p>
+<p>
+    <strong>Entreprise :</strong>
+    <%= @etu.lieu %>
+</p>
+<p>
+    <strong>Description :</strong>
+    <%= @etu.description %>
+</p>
+
+<%= link_to 'Edit', edit_etu_path(@etu) %> |
+<%= link_to 'Back', etus_path %>

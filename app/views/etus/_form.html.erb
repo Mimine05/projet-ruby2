@@ -1,8 +1,10 @@
-<%= simple_form_for(@formation) do |f| %>
+<%= simple_form_for(@etu) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-      <%= f.input :name, required: true %>
+      <%= f.input :annee %>
+      <%= f.input :lieu %>
+      <%= f.input :description %>
   </div>
 
   <div class="form-actions">
