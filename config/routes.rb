@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     devise_for :entreprises do
     end
 
-
     get 'users/profil'
     get 'user' => 'users#profil'
+    
+    get 'users/profiluser'
+    get 'user' => 'users#profiluser'
 
     resources :interets
     resources :experiences
@@ -15,11 +17,9 @@ Rails.application.routes.draw do
     get 'home/index'
 
     devise_for :users do
-        resources :users do 
             resources :formations
             resources :experiences
             resources :interets
-        end
     end
 
     root to: 'home#index'
