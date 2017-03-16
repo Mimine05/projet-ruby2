@@ -14,7 +14,7 @@
         <div class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="<%= root_path %>" class="navbar-brand">Accueil</a>
+                    <a href="<%= root_path %>" class="navbar-brand">Skyla</a>
                 </div>
                 <div class="navbar-nav navbar-center">
                     <li><a href="<%= formations_path %>" class="navbar-brand">Formations</a></li>
@@ -24,7 +24,7 @@
                 <div class="navbar-nav navbar-right">
                     <% if user_signed_in? %>
                     <li><a href="<%= edit_user_registration_path %>" class="navbar-brand">Mes infos persos</a></li>
-                    <li><a href="<%= users_profil_path %>" class="navbar-brand"><%= current_user.username %></a></li>
+                    <li><a href="<%= users_profiluser_path %>" class="navbar-brand"><%= current_user.username %></a></li>
                     <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %></li>
                     <% else %>
                     <li><%= link_to "S'inscrire", new_user_registration_path, :method => :get %></li>
@@ -36,8 +36,11 @@
 
         <div class="container"><%= yield %></div>
 
-
-        <%= debug session[:auth] %>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <h6>Copyright @MarinePorret 2017</h6>
+            </div>
+        </div>
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

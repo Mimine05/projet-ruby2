@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Profil de <%= @user.username %></h1>
+<h1>Mon profil - <%= @user.username %></h1>
 
 <table>
     <thead>
@@ -17,12 +17,15 @@
 
     <tbody>
         <h3>Formations</h3>
-        <% @formations.each do |formation| %>
+        <% @user.formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
             <td><%= formation.etablissement %></td>
             <td><%= formation.annee %></td>
             <td><%= formation.description %></td>
+            <td><%= link_to 'Afficher', formation %></td>
+            <td><%= link_to 'Editer', edit_formation_path(formation) %></td>
+            <td><%= link_to 'Supprimer', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>
@@ -48,7 +51,11 @@
             <td><%= experience.name %></td>
             <td><%= experience.lieu %></td>
             <td><%= experience.annee %></td>
-            <td><%= experience.description %></td></tr>
+            <td><%= experience.description %></td>
+            <td><%= link_to 'Afficher', experience %></td>
+            <td><%= link_to 'Editer', edit_experience_path(experience) %></td>
+            <td><%= link_to 'Supprimer', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
         <% end %>
     </tbody>
 </table>
@@ -69,7 +76,11 @@
         <% @user.interets.each do |interet| %>
         <tr>
             <td><%= interet.categorie %></td>
-            <td><%= interet.name %></td></tr>
+            <td><%= interet.name %></td>
+            <td><%= link_to 'Afficher', interet %></td>
+            <td><%= link_to 'Editer', edit_interet_path(interet) %></td>
+            <td><%= link_to 'Supprimer', interet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
         <% end %>
     </tbody>
 </table>
