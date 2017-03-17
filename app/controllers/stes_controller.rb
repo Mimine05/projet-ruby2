@@ -69,6 +69,6 @@ class StesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ste_params
-      params.require(:ste).permit(:description, :name)
+      params.require(:ste).permit(:name, :description, :secteur_id, :entreprise_id)
     end
 end

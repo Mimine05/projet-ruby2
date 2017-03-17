@@ -82,10 +82,14 @@ ActiveRecord::Schema.define(version: 20170317104251) do
   end
 
   create_table "stes", force: :cascade do |t|
+    t.integer  "entreprise_id"
+    t.integer  "secteur_id"
     t.string   "description"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["entreprise_id"], name: "index_stes_on_entreprise_id"
+    t.index ["secteur_id"], name: "index_stes_on_secteur_id"
   end
 
   create_table "users", force: :cascade do |t|

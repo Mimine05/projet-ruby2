@@ -1,5 +1,9 @@
 class EntreprisesController < ApplicationController
     def profil
-        @user = current_user
+        @entreprise = current_entreprise
+    end
+    
+    def profilentreprise
+        @entreprise = current_entreprise
     end
 end
