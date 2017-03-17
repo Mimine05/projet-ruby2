@@ -1,0 +1,2 @@
+class Ste < ApplicationRecord
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stes.each do |ste| %>
+      <tr>
+        <td><%= ste.description %></td>
+        <td><%= ste.name %></td>
+        <td><%= link_to 'Show', ste %></td>
+        <td><%= link_to 'Edit', edit_ste_path(ste) %></td>
+        <td><%= link_to 'Destroy', ste, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ste', new_ste_path %>

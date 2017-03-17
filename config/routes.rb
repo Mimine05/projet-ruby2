@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stes
+  resources :secteurs
     resources :itus
     resources :etus
     resources :ftus

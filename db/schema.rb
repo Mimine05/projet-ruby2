@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316213007) do
+ActiveRecord::Schema.define(version: 20170317104251) do
 
   create_table "entreprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 20170316213007) do
     t.string  "categorie"
     t.index ["interet_id"], name: "index_itus_on_interet_id"
     t.index ["user_id"], name: "index_itus_on_user_id"
+  end
+
+  create_table "secteurs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stes", force: :cascade do |t|
+    t.string   "description"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
