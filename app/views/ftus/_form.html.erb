@@ -2,6 +2,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  		<div class="form-group col-lg-5">
+			<%= f.association :formation, label: 'Formation', as: :check_boxes, item_wrapper_tag: :label, item_wrapper_class: 'checkbox-inline' %>
+		</div>
       <%= f.input :annee %>
       <%= f.input :etablissement %>
       <%= f.input :description %>

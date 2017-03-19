@@ -1,0 +1,11 @@
+        <% @user.formations.each do |formation| %>
+        <tr>
+            <td><%= formation.name %></td>
+            <td><%= formation.ftus.where(user_id: @user.id).first.etablissement %></td>
+            <td><%= formation.ftus.where(user_id: @user.id).first.annee %></td>
+            <td><%= formation.ftus.where(user_id: @user.id).first.description %></td>
+            <td><%= link_to 'Afficher', formation_ftus_path(formation.id, formation.ftus.where(user_id: @user.id).first.id ) %></td>
+            <td><%= link_to 'Editer', edit_formation_ftu_path(formation.id, formation.ftus.where(user_id: @user.id).first.id) %></td>
+            <td><%= link_to 'Supprimer', formation_ftus_path(formation.id, formation.ftus.where(user_id: @user.id).first.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>

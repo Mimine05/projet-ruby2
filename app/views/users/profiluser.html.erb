@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Mon profil - <%= @user.username %></h1>
-
+<h3>Mes Formations</h3>
 <table>
     <thead>
         <tr>
@@ -14,23 +14,13 @@
             <td></td>
         </tr>
     </thead>
-
-    <tbody>
-        <h3>Formations</h3>
-        <% current_user.formations.each do |formation| %>
-        <tr>
-            <td><%= formation.name %></td>
-            <td><%= formation.ftus.where(user_id: current_user.id).first.etablissement %></td>
-            <td><%= formation.ftus.where(user_id: current_user.id).first.annee %></td>
-            <td><%= formation.ftus.where(user_id: current_user.id).first.description %></td>
-            <td><%= link_to 'Afficher', formation %></td>
-            <td><%= link_to 'Editer', edit_formation_path(formation) %></td>
-            <td><%= link_to 'Supprimer', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
+<tbody class="renderUserFormationList">
+    <%= render partial: 'userFormationlist' , locals: {user: @user} %>
+</tbody>
 </table>
-
+    <% @formations.each do |f| %>
+        <%= link_to "Ajouter "+f.name.to_s, {controller: "users", action: "addformation", formation_id: f.id} ,remote: true %>
+    <% end %>
 <table>
     <thead>
         <tr>
@@ -46,12 +36,12 @@
 
     <tbody>
         <h3>Expériences</h3>
-        <% current_user.experiences.each do |experience| %>
+        <% @user.experiences.each do |experience| %>
         <tr>
             <td><%= experience.name %></td>
-            <td><%= experience.etus.where(user_id: current_user.id).first.lieu %></td>
-            <td><%= experience.etus.where(user_id: current_user.id).first.annee %></td>
-            <td><%= experience.etus.where(user_id: current_user.id).first.description %></td>
+            <td><%= experience.etus.where(user_id: @user.id).first.lieu %></td>
+            <td><%= experience.etus.where(user_id: @user.id).first.annee %></td>
+            <td><%= experience.etus.where(user_id: @user.id).first.description %></td>
             <td><%= link_to 'Afficher', experience %></td>
             <td><%= link_to 'Editer', edit_experience_path(experience) %></td>
             <td><%= link_to 'Supprimer', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -73,9 +63,9 @@
 
     <tbody>
         <h3>Intérêts</h3>
-        <% current_user.interets.each do |interet| %>
+        <% @user.interets.each do |interet| %>
         <tr>
-            <td><%= interet.itus.where(user_id: current_user.id).first.categorie %></td>
+            <td><%= interet.itus.where(user_id: @user.id).first.categorie %></td>
             <td><%= interet.name %></td>
             <td><%= link_to 'Afficher', interet %></td>
             <td><%= link_to 'Editer', edit_interet_path(interet) %></td>

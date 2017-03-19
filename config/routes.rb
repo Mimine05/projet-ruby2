@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get 'users/profiluser'
     get 'user' => 'users#profiluser'
 
+    get 'addformation' => 'users#addformation'
+
     devise_for :users do
         resources :formations
         resources :experiences
