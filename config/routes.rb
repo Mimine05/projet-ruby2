@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'user' => 'users#profiluser'
 
     get 'addformation' => 'users#addformation'
+    get 'destroyftu' => 'users#destroy_ftu'
 
     devise_for :users do
         resources :formations

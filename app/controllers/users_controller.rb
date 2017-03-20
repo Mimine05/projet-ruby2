@@ -20,5 +20,16 @@ class UsersController < ApplicationController
     	end
 
     end
+
+    def destroy_ftu
+        @ftu = current_user.ftus.find(params[:ftu_id])
+        @ftu.destroy
+        @user = current_user
+        respond_to do |format|
+            format.html { redirect_to profiluser_url, notice: 'Ftu was successfully destroyed.' }
+            format.json { head :no_content }
+            format.js
+        end
+    end
     
 end

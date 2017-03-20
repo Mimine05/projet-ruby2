@@ -4,16 +4,7 @@
   <div class="form-inputs">
       <%= f.input :name, required: true %>
   </div>
-
-  <% if user_signed_in? %>
-      <%= formation.ftus.where(user_id: current_user.id).first.etablissement %>
-      <%= formation.ftus.where(user_id: current_user.id).first.annee %>
-      <%= formation.ftus.where(user_id: current_user.id).first.description %> 
-      Coucou           
-  <% else %>
-  	  Yo                    
-  <% end %>
-
+  
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

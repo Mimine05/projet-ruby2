@@ -18,7 +18,7 @@
             <td><%= formation.name %></td>
             <td><%= link_to 'Show', formation %></td>
             <td><%= link_to 'Edit', edit_formation_path(formation) %></td>
-            <td><%= link_to 'Destroy', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', formation, method: :delete, remote: true %></td>
         </tr>
         <% end %>
     </tbody>

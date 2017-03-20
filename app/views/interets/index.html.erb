@@ -16,7 +16,7 @@
         <td><%= interet.name %></td>
         <td><%= link_to 'Afficher', interet %></td>
         <td><%= link_to 'Editer', edit_interet_path(interet) %></td>
-        <td><%= link_to 'Supprimer', interet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Supprimer', interet, method: :delete, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
