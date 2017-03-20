@@ -20,9 +20,9 @@
         <% @formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
-            <td><%= formation.etablissement %></td>
-            <td><%= formation.annee %></td>
-            <td><%= formation.description %></td>
+            <td><%= formation.ftus.where(formation_id: formation.id).first.etablissement %></td>
+            <td><%= formation.ftus.where(formation_id: formation.id).first.annee %></td>
+            <td><%= formation.ftus.where(formation_id: formation.id).first.description %></td>
         </tr>
         <% end %>
     </tbody>
@@ -46,9 +46,9 @@
         <% @user.experiences.each do |experience| %>
         <tr>
             <td><%= experience.name %></td>
-            <td><%= experience.lieu %></td>
-            <td><%= experience.annee %></td>
-            <td><%= experience.description %></td></tr>
+            <td><%= experience.etus.where(experience_id: experience.id).first.lieu %></td>
+            <td><%= experience.etus.where(experience_id: experience.id).first.annee %></td>
+            <td><%= experience.etus.where(experience_id: experience.id).first.description %></td></tr>
         <% end %>
     </tbody>
 </table>
@@ -69,7 +69,7 @@
         <% @user.interets.each do |interet| %>
         <tr>
             <td><%= interet.categorie %></td>
-            <td><%= interet.name %></td></tr>
+            <td><%= interet.itus.where(interet_id: interet.id).first.name %></td></tr>
         <% end %>
     </tbody>
 </table>

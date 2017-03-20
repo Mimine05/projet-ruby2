@@ -28,8 +28,8 @@ class FtusController < ApplicationController
 
         respond_to do |format|
             if @ftu.save
-                format.html { redirect_to @ftu, notice: 'Ftu was successfully created.' }
-                format.json { render :show, status: :created, location: @ftu }
+                format.html { redirect_to users_profiluser_path, notice: 'Ftu was successfully created.' }
+                format.json { render :show, status: :created, location: users_profiluser_path }
             else
                 format.html { render :new }
                 format.json { render json: @ftu.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class FtusController < ApplicationController
     def update
         respond_to do |format|
             if @ftu.update(ftu_params)
-                format.html { redirect_to @ftu, notice: 'Ftu was successfully updated.' }
-                format.json { render :show, status: :ok, location: @ftu }
+                format.html { redirect_to users_profiluser_path, notice: 'Ftu was successfully updated.' }
+                format.json { render :show, status: :ok, location: users_profiluser_path }
             else
                 format.html { render :edit }
                 format.json { render json: @ftu.errors, status: :unprocessable_entity }
@@ -65,7 +65,9 @@ class FtusController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ftu
         @ftu = Ftu.find(params[:id])
-        @formation = Formation.find(params[:id])
+        if params[:formation_id] == true
+            @formation = Formation.find(params[:formation_id])
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
