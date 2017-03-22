@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Mon profil - <%= @user.username %></h1>
+
+<h3>Ma présentation :</h3>
+<%= @user.description %><br>
+<%= link_to 'Afficher', user_path %>    <%= link_to 'Editer', edit_user_registration_path %>
+
 <h3>Mes Formations</h3>
 <table>
     <thead>
@@ -14,13 +19,16 @@
             <td></td>
         </tr>
     </thead>
-<tbody class="renderUserFormationList">
-    <%= render partial: 'userFormationlist' , locals: {user: @user} %>
-</tbody>
+    <tbody class="renderUserFormationList">
+        <%= render partial: 'userFormationlist' , locals: {user: @user} %>
+    </tbody>
 </table>
-    <% @formations.each do |f| %>
-        <%= link_to "Ajouter "+f.name.to_s, {controller: "users", action: "addformation", formation_id: f.id} ,remote: true %>
-    <% end %>
+<% @formations.each do |f| %>
+<%= link_to "Ajouter "+f.name.to_s, {controller: "users", action: "addformation", formation_id: f.id} ,remote: true %>
+<% end %>
+
+
+<h3>Expériences</h3>
 <table>
     <thead>
         <tr>
@@ -33,46 +41,31 @@
             <td></td>
         </tr>
     </thead>
-
-    <tbody>
-        <h3>Expériences</h3>
-        <% @user.experiences.each do |experience| %>
-        <tr>
-            <td><%= experience.name %></td>
-            <td><%= experience.etus.where(user_id: @user.id).first.lieu %></td>
-            <td><%= experience.etus.where(user_id: @user.id).first.annee %></td>
-            <td><%= experience.etus.where(user_id: @user.id).first.description %></td>
-            <td><%= link_to 'Afficher', experience %></td>
-            <td><%= link_to 'Editer', edit_experience_path(experience) %></td>
-            <td><%= link_to 'Supprimer', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
+    <tbody class="renderUserExperienceList">
+        <%= render partial: 'userExperiencelist' , locals: {user: @user} %>
     </tbody>
 </table>
+<% @experiences.each do |e| %>
+<%= link_to "Ajouter "+e.name.to_s, {controller: "users", action: "addexperience", experience_id: e.id} ,remote: true %>
+<% end %>
 
+<h3>Intérêts</h3>
 <table>
     <thead>
         <tr>
-            <td>Catégorie</td>
             <td>Nom</td>
+            <td>Catégorie</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
     </thead>
-
-    <tbody>
-        <h3>Intérêts</h3>
-        <% @user.interets.each do |interet| %>
-        <tr>
-            <td><%= interet.itus.where(user_id: @user.id).first.categorie %></td>
-            <td><%= interet.name %></td>
-            <td><%= link_to 'Afficher', interet %></td>
-            <td><%= link_to 'Editer', edit_interet_path(interet) %></td>
-            <td><%= link_to 'Supprimer', interet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
+    <tbody class="renderUserInteretList">
+        <%= render partial: 'userInteretlist' , locals: {user: @user} %>
     </tbody>
 </table>
+<% @interets.each do |i| %>
+<%= link_to "Ajouter "+i.categorie.to_s, {controller: "users", action: "addinteret", interet_id: i.id} ,remote: true %>
+<% end %>
 
 <br>

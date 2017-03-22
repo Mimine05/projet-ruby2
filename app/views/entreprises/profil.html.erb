@@ -1,2 +1,8 @@
-<h1>Entreprises#profil</h1>
-<p>Find me in app/views/entreprises/profil.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @entreprise.username %></h1>
+
+<h3>Présentation</h3>
+<%= @entreprise.secteur %>
+
+<%= @entreprise.description %>

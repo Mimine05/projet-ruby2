@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
             user_params.permit( :username, :email, :password, :password_confirmation)
         end
         devise_parameter_sanitizer.permit(:account_update) do |user_params|
-            user_params.permit( :username, :email, :password, :password_confirmation)
+            user_params.permit( :username, :description, :email, :password, :password_confirmation)
         end
     end
 
     protected
 
     def configure_permitted_parameters
-        added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+        added_attrs = [:username, :description, :email, :password, :password_confirmation, :remember_me]
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end

@@ -1,0 +1,9 @@
+<% @user.interets.each do |interet| %>
+<tr>
+    <td><%= interet.categorie %></td>
+    <td><%= interet.itus.where(user_id: @user.id).first.name %></td>
+    <td><%= link_to 'Afficher', interet_itus_path(interet.id, interet.itus.where(user_id: @user.id).first.id ) %></td>
+    <td><%= link_to 'Editer', edit_interet_itu_path(interet.id, interet.itus.where(user_id: @user.id).first.id) %></td>
+    <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_itu", itu_id: interet.itus.where(user_id: @user.id).first.id}, remote: true %></td>
+</tr>
+<% end %>

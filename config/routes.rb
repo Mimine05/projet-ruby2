@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
     get 'addformation' => 'users#addformation'
     get 'destroyftu' => 'users#destroy_ftu'
+    
+    get 'addexperience' => 'users#addexperience'
+    get 'destroyetu' => 'users#destroy_etu'
+    
+    get 'addinteret' => 'users#addinteret'
+    get 'destroyitu' => 'users#destroy_itu'
 
     devise_for :users do
         resources :formations

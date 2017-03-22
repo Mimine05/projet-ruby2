@@ -1,6 +1,6 @@
 class EntreprisesController < ApplicationController
     def profil
-        @entreprise = current_entreprise
+        @entreprise = Entreprise.find(params[:entreprise_id])
     end
     
     def profilentreprise

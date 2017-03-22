@@ -69,6 +69,6 @@ class ItusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def itu_params
-      params.require(:itu).permit(:categorie, :interet_id, :user_id)
+      params.require(:itu).permit(:name, :interet_id, :user_id)
     end
 end
