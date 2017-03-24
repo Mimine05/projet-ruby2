@@ -11,7 +11,7 @@ Pas d'images
 <h3>Ma présentation :</h3>
 <%= @user.description %><br>
 <%= link_to 'Afficher', user_path %>    <%= link_to 'Editer', edit_user_registration_path %>
-
+<% if !is_entreprise %>
 <h3>Mes Formations</h3>
 <table>
     <thead>
@@ -72,6 +72,27 @@ Pas d'images
 </table>
 <% @interets.each do |i| %>
 <%= link_to "Ajouter "+i.categorie.to_s, {controller: "users", action: "addinteret", interet_id: i.id} ,remote: true %>
+<% end %>
+<% end %>
+
+<% if is_entreprise %>
+<h3>Mon secteur d'actvité :</h3>
+<table>
+    <thead>
+        <tr>
+            <td>Nom</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody class="renderUserSecteurList">
+        <%= render partial: 'userSecteurlist' , locals: {user: @user} %>
+    </tbody>
+</table>
+<% @secteurs.each do |s| %>
+<%= link_to "Ajouter "+s.name.to_s, {controller: "users", action: "addsecteur", secteur_id: s.id} ,remote: true %>
+<% end %>
 <% end %>
 
 <br>

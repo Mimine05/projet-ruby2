@@ -30,5 +30,8 @@ class User < ApplicationRecord
     
     has_many :itus
 	has_many :interets, through: :itus
+
+    has_many :stes
+    has_many :secteurs, through: :stes
 end
 

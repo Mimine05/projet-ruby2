@@ -11,6 +11,7 @@ class UsersController < ApplicationController
         @formations = Formation.all
         @experiences = Experience.all
         @interets = Interet.all
+        @secteurs = Secteur.all
     end
 
     def addformation
@@ -81,9 +82,28 @@ class UsersController < ApplicationController
             format.js
         end
     end
-    
-    def user_params
-        params.require(:user).permit(:avatar)
+
+    def addsecteur
+        @user = current_user
+        @secteur = Secteur.find(params[:secteur_id])
+        @user.secteurs << @secteur
+
+        respond_to do |format|
+            format.html{redirect_to :back}
+            format.js
+        end
+
+    end
+
+    def destroy_ste
+        @ste = current_user.stes.find(params[:ste_id])
+        @ste.destroy
+        @user = current_user
+        respond_to do |format|
+            format.html { redirect_to profiluser_url, notice: 'Ste was successfully destroyed.' }
+            format.json { head :no_content }
+            format.js
+        end
     end
     
 end

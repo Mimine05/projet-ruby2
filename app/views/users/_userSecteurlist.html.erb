@@ -1,0 +1,8 @@
+<% @user.secteurs.each do |secteur| %>
+<tr>
+	<td><%= secteur.name %></td>
+    <td><%= link_to 'Afficher', secteur_stes_path(secteur.id, secteur.stes.where(user_id: @user.id).first.id ) %></td>
+    <td><%= link_to 'Editer', edit_secteur_ste_path(secteur.id, secteur.stes.where(user_id: @user.id).first.id) %></td>
+    <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_ste", ste_id: secteur.stes.where(user_id: @user.id).first.id}, remote: true %></td>
+    </tr>
+<% end %>

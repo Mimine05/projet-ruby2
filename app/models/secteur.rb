@@ -1,4 +1,4 @@
 class Secteur < ApplicationRecord
     has_many :stes
-    has_many :entreprises, through: :stes
+    has_many :users, through: :stes
 end

@@ -4,12 +4,6 @@ Rails.application.routes.draw do
     resources :etus
     resources :ftus
 
-    get 'entreprises/profil'
-    get 'entreprise' => 'entreprises#profil'
-    
-    get 'entreprises/profil'
-    get 'entreprise' => 'entreprises#profilentreprise'
-
     get 'users/profil'
     get 'user' => 'users#profil'
 
@@ -25,14 +19,15 @@ Rails.application.routes.draw do
     get 'addinteret' => 'users#addinteret'
     get 'destroyitu' => 'users#destroy_itu'
 
+    get 'addsecteur' => 'users#addsecteur'
+    get 'destroyste' => 'users#destroy_ste'
+
     devise_for :users do
         resources :formations
         resources :experiences
         resources :interets
+        resources :secteurs
     end
-    devise_for :entreprises do
-        resources :secteur
-    end 
     
     resources :secteurs do
         resources :stes
