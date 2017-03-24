@@ -77,18 +77,9 @@ Pas d'images
 
 <% if is_entreprise %>
 <h3>Mon secteur d'actvité :</h3>
-<table>
-    <thead>
-        <tr>
-            <td>Nom</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody class="renderUserSecteurList">
+    <div class="renderUserSecteurList">
         <%= render partial: 'userSecteurlist' , locals: {user: @user} %>
-    </tbody>
+    </div>
 </table>
 <% @secteurs.each do |s| %>
 <%= link_to "Ajouter "+s.name.to_s, {controller: "users", action: "addsecteur", secteur_id: s.id} ,remote: true %>
