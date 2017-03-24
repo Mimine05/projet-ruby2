@@ -22,13 +22,13 @@ Rails.application.routes.draw do
     get 'addsecteur' => 'users#addsecteur'
     get 'destroyste' => 'users#destroy_ste'
 
-    devise_for :users do
+    devise_for :users, :controllers => {:omniauth_callback => "omniauth_callback"} do 
         resources :formations
         resources :experiences
         resources :interets
         resources :secteurs
     end
-    
+
     resources :secteurs do
         resources :stes
     end
