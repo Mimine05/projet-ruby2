@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Stes</h1>
+<h1>Secteurs d'activités</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Nom</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
     <% @stes.each do |ste| %>
       <tr>
         <td><%= ste.name %></td>
-        <td><%= link_to 'Show', ste %></td>
-        <td><%= link_to 'Edit', edit_ste_path(ste) %></td>
-        <td><%= link_to 'Destroy', ste, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Afficher', ste, class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Editer', edit_ste_path(ste), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Supprimer', ste, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Ste', new_ste_path %>
+<%= link_to 'Nouvelle association', new_ste_path, class: 'btn btn-success' %>

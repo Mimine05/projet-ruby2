@@ -2,7 +2,7 @@
 
 <h1>Experiences</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -16,9 +16,9 @@
         <% @experiences.each do |experience| %>
         <tr>
             <td><%= experience.name %></td>
-            <td><%= link_to 'Show', experience %></td>
-            <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
-            <td><%= link_to 'Destroy', experience, method: :delete, remote: true %></td>
+            <td><%= link_to 'Afficher', experience, class: 'btn btn-warning' %></td>
+            <td><%= link_to 'Editer', edit_experience_path(experience), class: 'btn btn-info' %></td>
+            <td><%= link_to 'Supprimer', experience, method: :delete, remote: true, class: 'btn btn-danger' %></td>
         </tr>
         <% end %>
     </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Experience', new_experience_path %>
+<%= link_to 'Nouvelle expérience', new_experience_path, class: 'btn btn-success' %>

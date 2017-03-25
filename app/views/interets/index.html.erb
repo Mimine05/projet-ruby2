@@ -2,7 +2,7 @@
 
 <h1>Interets</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <td>Catégories</td>
@@ -14,9 +14,9 @@
     <% @interets.each do |interet| %>
       <tr>
         <td><%= interet.categorie %></td>
-        <td><%= link_to 'Afficher', interet %></td>
-        <td><%= link_to 'Editer', edit_interet_path(interet) %></td>
-        <td><%= link_to 'Supprimer', interet, method: :delete, remote: true %></td>
+        <td><%= link_to 'Afficher', interet, class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Editer', edit_interet_path(interet), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Supprimer', interet, method: :delete, remote: true, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Nouvel Intérêt', new_interet_path %>
+<%= link_to 'Nouvel Intérêt', new_interet_path, class: 'btn btn-success' %>

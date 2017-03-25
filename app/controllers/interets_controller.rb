@@ -10,6 +10,7 @@ class InteretsController < ApplicationController
   # GET /interets/1
   # GET /interets/1.json
   def show
+    @user = @interet.users
   end
 
   # GET /interets/new
@@ -28,7 +29,7 @@ class InteretsController < ApplicationController
 
     respond_to do |format|
       if @interet.save
-        format.html { redirect_to @interet, notice: 'Interet was successfully created.' }
+        format.html { redirect_to @interet, notice: "L'intérêt a été créé correctement." }
         format.json { render :show, status: :created, location: @interet }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class InteretsController < ApplicationController
   def update
     respond_to do |format|
       if @interet.update(interet_params)
-        format.html { redirect_to @interet, notice: 'Interet was successfully updated.' }
+        format.html { redirect_to @interet, notice: "L'intérêt a été mis à jour correctement." }
         format.json { render :show, status: :ok, location: @interet }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class InteretsController < ApplicationController
   def destroy
     @interet.destroy
     respond_to do |format|
-      format.html { redirect_to interets_url, notice: 'Interet was successfully destroyed.' }
+      format.html { redirect_to interets_url, notice: "L'intérêt a été détruit correctement." }
       format.json { head :no_content }
     end
   end

@@ -1,11 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.username %></h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                <% if current_user.avatar_file_name.nil? %>
+                Pas d'images
+                <% else %>
+                <%= image_tag @user.avatar.url(:medium) %>
+                <% end %>
+            </td>
+            <td>
+                <h1><%= @user.username %></h1><br>
+                <%= @user.description %>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<h3>Présentation</h3>
-<%= @user.description %>
 
-<table>
+
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -31,7 +46,7 @@
     </tbody>
 </table>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -56,7 +71,7 @@
     </tbody>
 </table>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Catégorie</td>

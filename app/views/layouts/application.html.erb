@@ -3,9 +3,11 @@
     <head>
         <title>Projet</title>
         <%= csrf_meta_tags %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
     <body>
@@ -14,16 +16,54 @@
                 <div class="navbar-header">
                     <a href="<%= root_path %>" class="navbar-brand">Skyla</a>
                 </div>
-                <div class="navbar-nav navbar-center">
-                    <li><a href="<%= formations_path %>" class="navbar-brand">Formations</a></li>
-                    <li><a href="<%= experiences_path %>" class="navbar-brand">Expériences</a></li>
-                    <li><a href="<%= interets_path %>" class="navbar-brand">Intérêts</a></li>
-                </div>
-                <div class="navbar-nav navbar-right">
+   
+                <div class="navbar-brand">
                     <% if user_signed_in? %>
-                    <li><a href="<%= edit_user_registration_path %>" class="navbar-brand">Mes infos persos</a></li>
-                    <li><a href="<%= users_profiluser_path %>" class="navbar-brand"><%= current_user.username %></a></li>
-                    <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %></li>
+                        <% if current_user.role == 'Entreprise' || current_user.role == 'Admin' %>
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                Rechercher un profil
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
+                                    <li class="dropdown-header">en fonction de</li>
+                                    <li><a href="<%= formations_path %>" title="Formation">La formation</a></li>
+                                    <li><a href="<%= experiences_path %>" title="Experience">L'expérience</a></li>
+                                    <li><a href="<%= interets_path %>" title="Interet">L'intérêt</a></li>
+                                </ul>
+                            </div>
+                        <% end %>
+                        <% if current_user.role == 'Particulier' || current_user.role == 'Admin' %>
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                Rechercher une entreprise
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
+                                    <li class="dropdown-header">en fonction</li>
+                                    <li><a href="<%= secteurs_path %>" title="secteur">Du secteur d'activité</a></li>
+                                    <li><a href="#" title="Edit User">Des offres d'emploi</a></li>
+                                    <li><a href="#" title="Edit User"></a></li>
+                                </ul>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+
+                <div class="navbar-brand navbar-right">
+                    <% if user_signed_in? %>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                        <%= current_user.username %>
+                            <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
+                            <li><a href="<%= users_profiluser_path %>" title="Pofil">Profil</a></li>
+                            <li><a href="<%= edit_user_registration_path %>" title="Edit User">Editer mon profil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method => :delete %></li>
+                        </ul>
+                    </div>
                     <% else %>
                     <li><%= link_to "S'inscrire", new_user_registration_path, :method => :get %></li>
                     <li><%= link_to "Se connecter", new_user_session_path, :method => :get %></li>
@@ -32,15 +72,22 @@
             </div>
         </div>
 
-        <div class="container"><%= yield %></div>
+        <div class="container"><%= yield %><br><br></div>
 
         <div class="navbar navbar-inverse">
             <div class="container">
-                <h6>Copyright @MarinePorret 2017</h6>
+                <div class="navbar-brand" style="font-size: 15px;">Marine Porret 2017</div> 
             </div>
         </div>
 
+
         <!-- Latest compiled and minified JavaScript -->
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     </body>
 </html>
+
+
+
+
+

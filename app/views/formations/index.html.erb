@@ -2,7 +2,7 @@
 
 <h1>Formations</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -16,9 +16,9 @@
         <% @formations.each do |formation| %>
         <tr>
             <td><%= formation.name %></td>
-            <td><%= link_to 'Show', formation %></td>
-            <td><%= link_to 'Edit', edit_formation_path(formation) %></td>
-            <td><%= link_to 'Destroy', formation, method: :delete, remote: true %></td>
+            <td><%= link_to 'Afficher', formation_path(formation.id), class: 'btn btn-warning' %></td>
+            <td><%= link_to 'Editer', edit_formation_path(formation), class: 'btn btn-info' %></td>
+            <td><%= link_to 'Supprimer', formation, method: :delete, remote: true, class: 'btn btn-danger' %></td>
         </tr>
         <% end %>
     </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Formation', new_formation_path %>
+<%= link_to 'Nouvelle formation', new_formation_path, class: 'btn btn-success' %>

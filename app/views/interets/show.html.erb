@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Catégorie :</strong>
+  <strong>Intérêt :</strong>
   <%= @interet.categorie %>
 </p>
 
-<%= link_to 'Edit', edit_interet_path(@interet) %> |
-<%= link_to 'Back', interets_path %>
+<b>Personnes ayant cet intérêt :</b><br>
+<% @user.each do |user| %>
+    <tr>
+        <td><%= user.username %></td>
+        <td><%= link_to 'Afficher', {controller: "users", action: "profil", user_id: user.id}, class: 'btn btn-warning' %></td>
+    </tr>
+<% end %>
+<br><br>
+
+<%= link_to 'Editer', edit_interet_path(@interet), class: 'btn btn-info' %> |
+<%= link_to 'Retour', interets_path, class: 'btn btn-default' %>

@@ -10,6 +10,7 @@ class SecteursController < ApplicationController
   # GET /secteurs/1
   # GET /secteurs/1.json
   def show
+    @user = @secteur.users
   end
 
   # GET /secteurs/new
@@ -28,7 +29,7 @@ class SecteursController < ApplicationController
 
     respond_to do |format|
       if @secteur.save
-        format.html { redirect_to @secteur, notice: 'Secteur was successfully created.' }
+        format.html { redirect_to @secteur, notice: "Le secteur d'activité a été créé correctement." }
         format.json { render :show, status: :created, location: @secteur }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class SecteursController < ApplicationController
   def update
     respond_to do |format|
       if @secteur.update(secteur_params)
-        format.html { redirect_to @secteur, notice: 'Secteur was successfully updated.' }
+        format.html { redirect_to @secteur, notice: "Le secteur d'activité a été mis à jour correctement." }
         format.json { render :show, status: :ok, location: @secteur }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class SecteursController < ApplicationController
   def destroy
     @secteur.destroy
     respond_to do |format|
-      format.html { redirect_to secteurs_url, notice: 'Secteur was successfully destroyed.' }
+      format.html { redirect_to secteurs_url, notice: "Le secteur d'activité a été détruite correctement." }
       format.json { head :no_content }
     end
   end

@@ -10,6 +10,7 @@ class FormationsController < ApplicationController
     # GET /formations/1
     # GET /formations/1.json
     def show
+        @user = @formation.users
     end
 
     # GET /formations/new
@@ -28,7 +29,7 @@ class FormationsController < ApplicationController
 
         respond_to do |format|
             if @formation.save
-                format.html { redirect_to @formation, notice: 'Formation was successfully created.' }
+                format.html { redirect_to @formation, notice: "La formation a été créée correctement." }
                 format.json { render :show, status: :created, location: @formation }
             else
                 format.html { render :new }
@@ -47,7 +48,7 @@ class FormationsController < ApplicationController
         
         respond_to do |format|
             if @formation.update(formation_params)
-                format.html { redirect_to @formation, notice: 'Formation was successfully updated.' }
+                format.html { redirect_to @formation, notice: "La formation a été mise à jour correctement." }
                 format.json { render :show, status: :ok, location: @formation }
             else
                 format.html { render :edit }
@@ -61,7 +62,7 @@ class FormationsController < ApplicationController
     def destroy
         @formation.destroy
         respond_to do |format|
-            format.html { redirect_to formations_url, notice: 'Formation was successfully destroyed.' }
+            format.html { redirect_to formations_url, notice: "La formation a été détruite correctement." }
             format.json { head :no_content }
         end
     end

@@ -1,11 +1,14 @@
 <%= simple_form_for(@experience) do |f| %>
 <%= f.error_notification %>
 
-<div class="form-inputs">
-    <%= f.input :name %>
-</div>
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<%= f.input :name, label: 'Nom', class: 'form-control' %>
+		</div>
+	</div>
+	
 <br>
 <div class="form-actions">
-    <%= f.button :submit %>
-</div>
+    <%= f.button :submit, class: 'btn btn-success' %>
+</div><br>
 <% end %>

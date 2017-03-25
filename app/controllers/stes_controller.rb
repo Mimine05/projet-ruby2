@@ -28,7 +28,7 @@ class StesController < ApplicationController
 
     respond_to do |format|
       if @ste.save
-        format.html { redirect_to @ste, notice: 'Ste was successfully created.' }
+        format.html { redirect_to @ste, notice: "Le secteur d'activité a été créé correctement." }
         format.json { render :show, status: :created, location: @ste }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class StesController < ApplicationController
   def update
     respond_to do |format|
       if @ste.update(ste_params)
-        format.html { redirect_to @ste, notice: 'Ste was successfully updated.' }
+        format.html { redirect_to @ste, notice: "Le secteur d'activité a été mis à jour correctement." }
         format.json { render :show, status: :ok, location: @ste }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class StesController < ApplicationController
   def destroy
     @ste.destroy
     respond_to do |format|
-      format.html { redirect_to stes_url, notice: 'Ste was successfully destroyed.' }
+      format.html { redirect_to stes_url, notice: "Le secteur d'activité a été détruit correctement." }
       format.json { head :no_content }
     end
   end

@@ -4,8 +4,8 @@
     <td><%= experience.etus.where(user_id: @user.id).first.lieu %></td>
     <td><%= experience.etus.where(user_id: @user.id).first.annee %></td>
     <td><%= experience.etus.where(user_id: @user.id).first.description %></td>
-    <td><%= link_to 'Afficher', experience_etus_path(experience.id, experience.etus.where(user_id: @user.id).first.id ) %></td>
-    <td><%= link_to 'Editer', edit_experience_etu_path(experience.id, experience.etus.where(user_id: @user.id).first.id) %></td>
-    <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_etu", etu_id: experience.etus.where(user_id: @user.id).first.id}, remote: true %></td>
+    <td><%= link_to 'Afficher', experience_etus_path(experience.id, experience.etus.where(user_id: @user.id).first.id ), class: 'btn btn-warning' %></td>
+    <td><%= link_to 'Editer', edit_experience_etu_path(experience.id, experience.etus.where(user_id: @user.id).first.id), class: 'btn btn-info' %></td>
+    <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_etu", etu_id: experience.etus.where(user_id: @user.id).first.id}, remote: true, class: 'btn btn-danger' %></td>
 </tr>
 <% end %>

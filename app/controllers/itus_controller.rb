@@ -28,7 +28,7 @@ class ItusController < ApplicationController
 
     respond_to do |format|
       if @itu.save
-        format.html { redirect_to @itu, notice: 'Itu was successfully created.' }
+        format.html { redirect_to @itu, notice: "L'intérêt a été créé correctement." }
         format.json { render :show, status: :created, location: @itu }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ItusController < ApplicationController
   def update
     respond_to do |format|
       if @itu.update(itu_params)
-        format.html { redirect_to @itu, notice: 'Itu was successfully updated.' }
+        format.html { redirect_to @itu, notice: "L'intérêt a été mis à jour correctement." }
         format.json { render :show, status: :ok, location: @itu }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ItusController < ApplicationController
   def destroy
     @itu.destroy
     respond_to do |format|
-      format.html { redirect_to itus_url, notice: 'Itu was successfully destroyed.' }
+      format.html { redirect_to itus_url, notice: "L'intérêt a été détruit correctement." }
       format.json { head :no_content }
     end
   end

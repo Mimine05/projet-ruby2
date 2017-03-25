@@ -28,7 +28,7 @@ class FtusController < ApplicationController
 
         respond_to do |format|
             if @ftu.save
-                format.html { redirect_to users_profiluser_path, notice: 'Ftu was successfully created.' }
+                format.html { redirect_to users_profiluser_path, notice: "La formation a été créée correctement." }
                 format.json { render :show, status: :created, location: users_profiluser_path }
             else
                 format.html { render :new }
@@ -42,7 +42,7 @@ class FtusController < ApplicationController
     def update
         respond_to do |format|
             if @ftu.update(ftu_params)
-                format.html { redirect_to users_profiluser_path, notice: 'Ftu was successfully updated.' }
+                format.html { redirect_to users_profiluser_path, notice: "La formation a été mise à jour correctement." }
                 format.json { render :show, status: :ok, location: users_profiluser_path }
             else
                 format.html { render :edit }
@@ -56,7 +56,7 @@ class FtusController < ApplicationController
     def destroy
         @ftu.destroy
         respond_to do |format|
-            format.html { redirect_to ftus_url, notice: 'Ftu was successfully destroyed.' }
+            format.html { redirect_to ftus_url, notice: "La formation a été détruite correctement." }
             format.json { head :no_content }
         end
     end

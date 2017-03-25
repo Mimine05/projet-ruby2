@@ -28,7 +28,7 @@ class EtusController < ApplicationController
 
     respond_to do |format|
       if @etu.save
-        format.html { redirect_to @etu, notice: 'Etu was successfully created.' }
+        format.html { redirect_to @etu, notice: "L'expérience a été créée correctement." }
         format.json { render :show, status: :created, location: @etu }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EtusController < ApplicationController
   def update
     respond_to do |format|
       if @etu.update(etu_params)
-        format.html { redirect_to @etu, notice: 'Etu was successfully updated.' }
+        format.html { redirect_to @etu, notice: "L'expérience a été mise à jour correctement." }
         format.json { render :show, status: :ok, location: @etu }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EtusController < ApplicationController
   def destroy
     @etu.destroy
     respond_to do |format|
-      format.html { redirect_to etus_url, notice: 'Etu was successfully destroyed.' }
+      format.html { redirect_to etus_url, notice: "L'expérience a été détruite correctement." }
       format.json { head :no_content }
     end
   end

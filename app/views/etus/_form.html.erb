@@ -1,13 +1,21 @@
 <%= simple_form_for(@etu) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-      <%= f.input :annee %>
-      <%= f.input :lieu %>
-      <%= f.input :description %>
-  </div>
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<%= f.input :annee, label: 'Année', class: 'form-control' %>
+		</div>
+
+		<div class="form-group col-lg-5">
+			<%= f.input :lieu, label: 'Lieu', class: 'form-control' %>
+		</div>
+
+		<div class="form-group col-lg-5">
+			<%= f.input :description, label: 'Description', class: 'form-control' %>
+		</div>
+	</div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.button :submit, class: 'btn btn-success' %>
+  </div><br>
 <% end %>

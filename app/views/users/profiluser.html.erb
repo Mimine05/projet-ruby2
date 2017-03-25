@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
+<h1>Mon profil</h1>
 
-<h1>Mon profil - <%= @user.username %></h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                <% if current_user.avatar_file_name.nil? %>
+                Pas d'images
+                <% else %>
+                <%= image_tag @user.avatar.url(:medium) %>
+                <% end %>
+            </td>
+            <td>
+                <h1><%= @user.username %></h1>
+                <h3>Ma présentation :</h3>
+                <%= @user.description %><br>
+                <%= link_to 'Afficher', user_path, class: 'btn btn-warning' %>    <%= link_to 'Editer', edit_user_registration_path, class: 'btn btn-info' %>
+                <% if !is_entreprise %>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<% if current_user.avatar_file_name.nil? %>
-Pas d'images
-<% else %>
-<%= image_tag @user.avatar.url %>
-<% end %>
-
-<h3>Ma présentation :</h3>
-<%= @user.description %><br>
-<%= link_to 'Afficher', user_path %>    <%= link_to 'Editer', edit_user_registration_path %>
-<% if !is_entreprise %>
 <h3>Mes Formations</h3>
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -30,12 +40,12 @@ Pas d'images
     </tbody>
 </table>
 <% @formations.each do |f| %>
-<%= link_to "Ajouter "+f.name.to_s, {controller: "users", action: "addformation", formation_id: f.id} ,remote: true %>
+<%= link_to "Ajouter "+f.name.to_s, {controller: "users", action: "addformation", formation_id: f.id} ,remote: true, class: 'btn btn-default' %>
 <% end %>
 
 
 <h3>Expériences</h3>
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -52,11 +62,11 @@ Pas d'images
     </tbody>
 </table>
 <% @experiences.each do |e| %>
-<%= link_to "Ajouter "+e.name.to_s, {controller: "users", action: "addexperience", experience_id: e.id} ,remote: true %>
+<%= link_to "Ajouter "+e.name.to_s, {controller: "users", action: "addexperience", experience_id: e.id} ,remote: true, class: 'btn btn-default' %>
 <% end %>
 
 <h3>Intérêts</h3>
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Nom</td>
@@ -71,7 +81,7 @@ Pas d'images
     </tbody>
 </table>
 <% @interets.each do |i| %>
-<%= link_to "Ajouter "+i.categorie.to_s, {controller: "users", action: "addinteret", interet_id: i.id} ,remote: true %>
+<%= link_to "Ajouter "+i.categorie.to_s, {controller: "users", action: "addinteret", interet_id: i.id} ,remote: true, class: 'btn btn-default' %>
 <% end %>
 <% end %>
 
@@ -82,7 +92,7 @@ Pas d'images
     </div>
 </table>
 <% @secteurs.each do |s| %>
-<%= link_to "Ajouter "+s.name.to_s, {controller: "users", action: "addsecteur", secteur_id: s.id} ,remote: true %>
+<%= link_to "Ajouter "+s.name.to_s, {controller: "users", action: "addsecteur", secteur_id: s.id} ,remote: true, class: 'btn btn-default' %>
 <% end %>
 <% end %>
 

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         @ftu.destroy
         @user = current_user
         respond_to do |format|
-            format.html { redirect_to profiluser_url, notice: 'Ftu was successfully destroyed.' }
+            format.html { redirect_to profiluser_url, notice: 'La formation a été détruite correctement.' }
             format.json { head :no_content }
             format.js
         end
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
         @etu.destroy
         @user = current_user
         respond_to do |format|
-            format.html { redirect_to profiluser_url, notice: 'etu was successfully destroyed.' }
+            format.html { redirect_to profiluser_url, notice: "L'expérience a été détruite correctement." }
             format.json { head :no_content }
             format.js
         end
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
         @itu.destroy
         @user = current_user
         respond_to do |format|
-            format.html { redirect_to profiluser_url, notice: 'Itu was successfully destroyed.' }
+            format.html { redirect_to profiluser_url, notice: "L'intérêt a été détruit correctement." }
             format.json { head :no_content }
             format.js
         end
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
         @ste.destroy
         @user = current_user
         respond_to do |format|
-            format.html { redirect_to profiluser_url, notice: 'Ste was successfully destroyed.' }
+            format.html { redirect_to profiluser_url, notice: "Le secteur d'activité a été détruit correctement." }
             format.json { head :no_content }
             format.js
         end

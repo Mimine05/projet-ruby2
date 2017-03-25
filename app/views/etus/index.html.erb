@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Etus</h1>
+<h1>Expérience</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -12,9 +12,9 @@
   <tbody>
     <% @etus.each do |etu| %>
       <tr>
-        <td><%= link_to 'Show', etu %></td>
-        <td><%= link_to 'Edit', edit_etu_path(etu) %></td>
-        <td><%= link_to 'Destroy', etu, method: :delete, remote: true %></td>
+        <td><%= link_to 'Afficher', etu, class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Editer', edit_etu_path(etu), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Supprimer', etu, method: :delete, remote: true, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Etu', new_etu_path %>
+<%= link_to 'Ajouter une association', new_etu_path, class: 'btn btn-success' %>

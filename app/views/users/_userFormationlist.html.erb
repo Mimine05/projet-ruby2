@@ -4,8 +4,8 @@
             <td><%= formation.ftus.where(user_id: @user.id).first.etablissement %></td>
             <td><%= formation.ftus.where(user_id: @user.id).first.annee %></td>
             <td><%= formation.ftus.where(user_id: @user.id).first.description %></td>
-            <td><%= link_to 'Afficher', formation_ftus_path(formation.id, formation.ftus.where(user_id: @user.id).first.id ) %></td>
-            <td><%= link_to 'Editer', edit_formation_ftu_path(formation.id, formation.ftus.where(user_id: @user.id).first.id) %></td>
-            <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_ftu", ftu_id: formation.ftus.where(user_id: @user.id).first.id}, remote: true %></td>
+            <td><%= link_to 'Afficher', formation_ftus_path(formation.id, formation.ftus.where(user_id: @user.id).first.id ), class: 'btn btn-warning' %></td>
+            <td><%= link_to 'Editer', edit_formation_ftu_path(formation.id, formation.ftus.where(user_id: @user.id).first.id), class: 'btn btn-info' %></td>
+            <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_ftu", ftu_id: formation.ftus.where(user_id: @user.id).first.id}, remote: true, class: 'btn btn-danger' %></td>
         </tr>
         <% end %>

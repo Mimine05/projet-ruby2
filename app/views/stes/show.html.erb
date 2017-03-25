@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Name:</strong>
+  <strong>Nom :</strong>
   <%= @ste.name %>
 </p>
 
-<%= link_to 'Edit', edit_ste_path(@ste) %> |
-<%= link_to 'Back', stes_path %>
+<%= link_to 'Editer', edit_ste_path(@ste), class: 'btn btn-info' %> |
+<%= link_to 'Retour', stes_path, class: 'btn btn-default' %>

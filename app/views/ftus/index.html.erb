@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ftus</h1>
+<h1>Formations</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -15,9 +15,9 @@
         <td><%= ftu.etablissement %></td>
         <td><%= ftu.annee %></td>
         <td><%= ftu.description %></td>
-        <td><%= link_to 'Show', ftu %></td>
-        <td><%= link_to 'Edit', edit_ftu_path(ftu) %></td>
-        <td><%= link_to 'Destroy', ftu, method: :delete, remote: true %></td>
+        <td><%= link_to 'Show', ftu, class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Edit', edit_ftu_path(ftu), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Destroy', ftu, method: :delete, remote: true, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Ftu', new_ftu_path %>
+<%= link_to 'Nouvelle association', new_ftu_path, class: 'btn btn-success' %>

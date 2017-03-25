@@ -1,4 +1,4 @@
 <% @user.secteurs.each do |secteur| %>
 <%= secteur.name %>
- <%= link_to 'Supprimer', {controller: "users", action: "destroy_ste", ste_id: secteur.stes.where(user_id: @user.id).first.id}, remote: true %>
+ <%= link_to 'Supprimer', {controller: "users", action: "destroy_ste", ste_id: secteur.stes.where(user_id: @user.id).first.id}, remote: true, class: 'btn btn-danger' %>
 <% end %>

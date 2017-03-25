@@ -10,6 +10,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    @user = @experience.users
   end
 
   # GET /experiences/new
@@ -28,7 +29,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
+        format.html { redirect_to @experience, notice: "L'expérience a été créée correctement." }
         format.json { render :show, status: :created, location: @experience }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class ExperiencesController < ApplicationController
   def update
     respond_to do |format|
       if @experience.update(experience_params)
-        format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
+        format.html { redirect_to @experience, notice: "L'expérience a été mise à jour correctement." }
         format.json { render :show, status: :ok, location: @experience }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class ExperiencesController < ApplicationController
   def destroy
     @experience.destroy
     respond_to do |format|
-      format.html { redirect_to experiences_url, notice: 'Experience was successfully destroyed.' }
+      format.html { redirect_to experiences_url, notice: "L'expérience a été détruite correctement." }
       format.json { head :no_content }
     end
   end
