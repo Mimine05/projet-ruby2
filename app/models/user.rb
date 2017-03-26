@@ -5,6 +5,14 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, 
     :validatable, :authentication_keys => {email: true, username: false, role: false}
 
+    devise :omniauthable, omniauth_providers:[:facebook]
+
+    def self.from_facebook(auth)
+        where(facebook_id: auth.uid).first_or_create do |user|
+        
+        end
+    end
+
     validates :username, presence: true, uniqueness: true
     validates :role, presence: true
 
