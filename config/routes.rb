@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :otes
     resources :stes
     resources :itus
     resources :etus
@@ -22,11 +23,20 @@ Rails.application.routes.draw do
     get 'addsecteur' => 'users#addsecteur'
     get 'destroyste' => 'users#destroy_ste'
 
+    get 'addoffre' => 'users#addoffre'
+    get 'destroyote' => 'users#destroy_ote'
+
     devise_for :users do
         resources :formations
         resources :experiences
         resources :interets
         resources :secteurs
+        resources :offres
+    end
+
+
+  resources :offres do
+        resources :otes
     end
     
     resources :secteurs do

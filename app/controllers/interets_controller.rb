@@ -1,5 +1,6 @@
 class InteretsController < ApplicationController
   before_action :set_interet, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /interets
   # GET /interets.json

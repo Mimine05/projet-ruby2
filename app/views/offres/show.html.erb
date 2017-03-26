@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Offre :</strong>
+  <%= @offre.name %>
+</p>
+
+<b>Entreprises proposants cette offre :</b><br>
+<% @user.each do |user| %>
+    <tr>
+        <td><%= user.username %></td>
+        <td><%= link_to 'Afficher', {controller: "users", action: "profil", user_id: user.id}, class: 'btn btn-warning' %></td>
+    </tr>
+<% end %>
+<br><br>
+
+<% if current_user.role == 'Admin' %>
+<%= link_to 'Editer', edit_offre_path(@offre), class: 'btn btn-info' %> |<% end %>
+<%= link_to 'Retour', offres_path, class: 'btn btn-default' %>

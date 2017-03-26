@@ -1,5 +1,6 @@
 class EtusController < ApplicationController
   before_action :set_etu, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /etus
   # GET /etus.json

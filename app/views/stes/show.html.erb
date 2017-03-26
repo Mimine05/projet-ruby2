@@ -3,6 +3,8 @@
   <strong>Nom :</strong>
   <%= @ste.name %>
 </p>
+<br><br>
 
-<%= link_to 'Editer', edit_ste_path(@ste), class: 'btn btn-info' %> |
+<% if current_user.role == 'Admin' %>
+<%= link_to 'Editer', edit_ste_path(@ste), class: 'btn btn-info' %> |<% end %>
 <%= link_to 'Retour', stes_path, class: 'btn btn-default' %>

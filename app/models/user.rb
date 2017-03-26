@@ -33,5 +33,8 @@ class User < ApplicationRecord
 
     has_many :stes
     has_many :secteurs, through: :stes
+
+    has_many :otes
+    has_many :offres, through: :otes
 end
 

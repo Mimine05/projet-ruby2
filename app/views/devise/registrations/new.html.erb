@@ -4,11 +4,39 @@
 <%= f.error_notification %>
 
                 <div class="form-inputs">
-                <%= f.input :role, collection: ['Particulier', 'Entreprise'], selected: 'Particulier', label: "Vous êtes :", required: true %>
-                    <%= f.input :username, label: "Votre nom complet ou le nom de votre entreprise", required: true %>
-                    <%= f.input :email, required: true, autofocus: true %>
-                    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                    <%= f.input :password_confirmation, required: true %>
+                <div class="form-group">
+                        <div class="col-sm-6">
+                        <%= f.input :role, collection: ['Particulier', 'Entreprise'], selected: 'Particulier', label: "Vous êtes : ", class: "form-control", required: true %>
+                        </div>
+                    </div><br><br>
+
+                    <div class="form-group">
+                    <%= f.label "Nom complet ou de l'Entreprise", class: 'col-sm-2 control-label'  %>
+                        <div class="col-sm-6">
+                        <%= f.text_field :username, class: "form-control", required: true %>
+                        </div>
+                    </div><br><br>
+
+                    <div class="form-group">
+                    <%= f.label 'Email', class: 'col-sm-2 control-label'  %>
+                        <div class="col-sm-6">
+                        <%= f.email_field :email, class: "form-control", required: true, autofocus: true %>
+                        </div>
+                    </div><br><br>
+
+                    <div class="form-group">
+                    <%= f.label 'Mot de Passe', class: 'col-sm-2 control-label'  %>
+                        <div class="col-sm-6">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", hint: "Laissez la case vide si vous ne souhaitez pas changer votre mot de passe", required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+                    </div>
+                    </div><br><br>
+
+                    <div class="form-group">
+                    <%= f.label 'Confirmer votre mot de passe', class: 'col-sm-2 control-label'  %>
+                        <div class="col-sm-6">
+                    <%= f.password_field :password_confirmation, class: "form-control", required: true %>
+                    </div>
+                    </div><br><br>
                 </div>
 
                 <div class="form-actions">

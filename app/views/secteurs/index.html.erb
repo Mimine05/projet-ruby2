@@ -15,13 +15,15 @@
       <tr>
         <td><%= secteur.name %></td>
         <td><%= link_to 'Afficher', secteur, class: 'btn btn-warning' %></td>
+        <% if current_user.role == 'Admin' %>
         <td><%= link_to 'Editer', edit_secteur_path(secteur), class: 'btn btn-info' %></td>
         <td><%= link_to 'Supprimer', secteur, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Nouveau secteur', new_secteur_path, class: 'btn btn-success' %>
+<% end %>

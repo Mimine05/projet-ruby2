@@ -17,9 +17,10 @@
                     <a href="<%= root_path %>" class="navbar-brand">Skyla</a>
                 </div>
    
-                <div class="navbar-brand">
+                
                     <% if user_signed_in? %>
                         <% if current_user.role == 'Entreprise' || current_user.role == 'Admin' %>
+                        <div class="navbar-brand">
                             <div class="dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
                                 Rechercher un profil
@@ -32,8 +33,10 @@
                                     <li><a href="<%= interets_path %>" title="Interet">L'intérêt</a></li>
                                 </ul>
                             </div>
+                        </div>
                         <% end %>
                         <% if current_user.role == 'Particulier' || current_user.role == 'Admin' %>
+                        <div class="navbar-brand">
                             <div class="dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
                                 Rechercher une entreprise
@@ -46,33 +49,48 @@
                                     <li><a href="#" title="Edit User"></a></li>
                                 </ul>
                             </div>
+                        </div>
                         <% end %>
                     <% end %>
-                </div>
+                
 
-                <div class="navbar-brand navbar-right">
-                    <% if user_signed_in? %>
-                    <div class="dropdown">
-                        <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                        <%= current_user.username %>
-                            <span class="caret"></span>
+                
+                <% if user_signed_in? %>
+                    <div class="navbar-brand navbar-right">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <%= current_user.username %>
+                                <span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
+                                <li><a href="<%= users_profiluser_path %>" title="Profil">Profil</a></li>
+                                <li><a href="<%= edit_user_registration_path %>" title="Edit User">Editer mon profil</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method => :delete %></li>
+                            </ul>
                         </div>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
-                            <li><a href="<%= users_profiluser_path %>" title="Pofil">Profil</a></li>
-                            <li><a href="<%= edit_user_registration_path %>" title="Edit User">Editer mon profil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method => :delete %></li>
-                        </ul>
                     </div>
-                    <% else %>
-                    <li><%= link_to "S'inscrire", new_user_registration_path, :method => :get %></li>
-                    <li><%= link_to "Se connecter", new_user_session_path, :method => :get %></li>
-                    <% end %>
-                </div>
+                <% else %>
+                    <div class="navbar-brand navbar-right">
+                        <%= link_to "S'inscrire", new_user_registration_path, :method => :get %>
+                    </div>
+                    <div class="navbar-brand navbar-right">
+                        <%= link_to "Se connecter", new_user_session_path, :method => :get %>
+                    </div>
+                <% end %>  
             </div>
         </div>
 
-        <div class="container"><%= yield %><br><br></div>
+
+
+
+        <div class="container">
+        <%= yield %><br><br>
+        </div>
+
+
+
+
 
         <div class="navbar navbar-inverse">
             <div class="container">

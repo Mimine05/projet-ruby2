@@ -1,6 +1,7 @@
 class ItusController < ApplicationController
   before_action :set_itu, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /itus
   # GET /itus.json
   def index

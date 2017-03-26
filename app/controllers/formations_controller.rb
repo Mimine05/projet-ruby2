@@ -1,6 +1,7 @@
 class FormationsController < ApplicationController
     before_action :set_formation, only: [:show, :edit, :update, :destroy]
-#    authorize_resource
+    authorize_resource
+    
     # GET /formations
     # GET /formations.json
     def index

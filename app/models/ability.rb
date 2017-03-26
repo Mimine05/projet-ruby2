@@ -3,17 +3,17 @@ class Ability
 
     def initialize(user)
 
-#        if user
-#            can :manage, Formation
-#        else
-#            can :read, Formation
-#        end
-#
-#        if current_user
-#            can :manage, UserRegistration
-#        else
-#            can :read, UserProfil
-#        end
+        if user
+           if user.role == 'Admin'
+               can :manage, :all
+           else
+                can :read, :all
+                can :manage, Ftu
+                can :manage, Etu 
+                can :manage, Itu 
+                can :manage, Ste 
+           end
+        end
 
 
         # Define abilities for the passed in user here. For example:

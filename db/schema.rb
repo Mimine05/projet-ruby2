@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324112220) do
+ActiveRecord::Schema.define(version: 20170326120345) do
 
   create_table "etus", force: :cascade do |t|
     t.integer "user_id"
@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(version: 20170324112220) do
     t.index ["user_id"], name: "index_itus_on_user_id"
   end
 
+  create_table "offres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "otes", force: :cascade do |t|
+    t.integer  "offre_id"
+    t.integer  "user_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["offre_id"], name: "index_otes_on_offre_id"
+    t.index ["user_id"], name: "index_otes_on_user_id"
+  end
+
   create_table "secteurs", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -67,9 +83,11 @@ ActiveRecord::Schema.define(version: 20170324112220) do
   create_table "stes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "secteur_id"
+    t.integer  "offre_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["offre_id"], name: "index_stes_on_offre_id"
     t.index ["secteur_id"], name: "index_stes_on_secteur_id"
     t.index ["user_id"], name: "index_stes_on_user_id"
   end

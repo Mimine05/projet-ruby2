@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description :</strong>
+  <%= @ote.description %>
+</p>
+<br><br>
+
+<% if current_user.role == 'Admin' %>
+<%= link_to 'Editer', edit_ote_path(@ote), class: 'btn btn-info' %> |<% end %>
+<%= link_to 'Retour', otes_path, class: 'btn btn-default' %>

@@ -15,13 +15,15 @@
       <tr>
         <td><%= ste.name %></td>
         <td><%= link_to 'Afficher', ste, class: 'btn btn-warning' %></td>
+        <% if current_user.role == 'Admin' %>
         <td><%= link_to 'Editer', edit_ste_path(ste), class: 'btn btn-info' %></td>
         <td><%= link_to 'Supprimer', ste, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Nouvelle association', new_ste_path, class: 'btn btn-success' %>
+<% end %>

@@ -17,13 +17,15 @@
         <tr>
             <td><%= formation.name %></td>
             <td><%= link_to 'Afficher', formation_path(formation.id), class: 'btn btn-warning' %></td>
+            <% if current_user.role == 'Admin' %>
             <td><%= link_to 'Editer', edit_formation_path(formation), class: 'btn btn-info' %></td>
-            <td><%= link_to 'Supprimer', formation, method: :delete, remote: true, class: 'btn btn-danger' %></td>
+            <td><%= link_to 'Supprimer', formation, method: :delete, class: 'btn btn-danger' %></td>
+            <% end %>
         </tr>
         <% end %>
     </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Nouvelle formation', new_formation_path, class: 'btn btn-success' %>
+<% end %>

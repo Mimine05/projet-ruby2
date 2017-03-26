@@ -1,6 +1,7 @@
 class StesController < ApplicationController
   before_action :set_ste, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /stes
   # GET /stes.json
   def index
@@ -69,6 +70,6 @@ class StesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ste_params
-      params.require(:ste).permit(:name, :description, :secteur_id, :entreprise_id)
+      params.require(:ste).permit(:name, :description, :secteur_id, :user_id)
     end
 end

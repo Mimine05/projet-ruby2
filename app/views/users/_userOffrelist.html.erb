@@ -1,0 +1,9 @@
+<% @user.offres.each do |offre| %>
+<tr>
+<td><%= offre.name %></td>
+<td><%= offre.otes.where(user_id: @user.id).first.description %></td>
+<td><%= link_to 'Afficher', offre_otes_path(offre.id, offre.otes.where(user_id: @user.id).first.id ), class: 'btn btn-warning' %></td>
+<td><%= link_to 'Editer', edit_offre_ote_path(offre.id, offre.otes.where(user_id: @user.id).first.id), class: 'btn btn-info' %></td>
+ <td><%= link_to 'Supprimer', {controller: "users", action: "destroy_ote", ote_id: offre.otes.where(user_id: @user.id).first.id}, remote: true, class: 'btn btn-danger' %></td>
+ </tr>
+<% end %>

@@ -1,5 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /experiences
   # GET /experiences.json

@@ -5,5 +5,7 @@
     <%= @itu.name %>
 </p>
 
-<%= link_to 'Editer', edit_itu_path(@itu), class: 'btn btn-info' %> |
+<br><br>
+<% if current_user.role == 'Admin' %>
+<%= link_to 'Editer', edit_itu_path(@itu), class: 'btn btn-info' %> |<% end %>
 <%= link_to 'Retour', itus_path, class: 'btn btn-default' %>

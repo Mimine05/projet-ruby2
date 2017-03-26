@@ -13,13 +13,15 @@
     <% @etus.each do |etu| %>
       <tr>
         <td><%= link_to 'Afficher', etu, class: 'btn btn-warning' %></td>
+        <% if current_user.role == 'Admin' %>
         <td><%= link_to 'Editer', edit_etu_path(etu), class: 'btn btn-info' %></td>
         <td><%= link_to 'Supprimer', etu, method: :delete, remote: true, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Ajouter une association', new_etu_path, class: 'btn btn-success' %>
+<% end %>

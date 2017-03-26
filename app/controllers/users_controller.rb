@@ -4,6 +4,8 @@ class UsersController < ApplicationController
         @formations = @user.formations
         @experiences = @user.experiences
         @interets = @user.interets
+        @secteurs = @user.secteurs
+        @offres = @user.offres
     end
     
     def profiluser
@@ -12,6 +14,7 @@ class UsersController < ApplicationController
         @experiences = Experience.all
         @interets = Interet.all
         @secteurs = Secteur.all
+        @offres = Offre.all
     end
 
     def addformation
@@ -101,6 +104,29 @@ class UsersController < ApplicationController
         @user = current_user
         respond_to do |format|
             format.html { redirect_to profiluser_url, notice: "Le secteur d'activité a été détruit correctement." }
+            format.json { head :no_content }
+            format.js
+        end
+    end
+
+    def addoffre
+        @user = current_user
+        @offre = Offre.find(params[:offre_id])
+        @user.offres << @offre
+
+        respond_to do |format|
+            format.html{redirect_to :back}
+            format.js
+        end
+
+    end
+
+    def destroy_ote
+        @ote = current_user.otes.find(params[:ote_id])
+        @ote.destroy
+        @user = current_user
+        respond_to do |format|
+            format.html { redirect_to profiluser_url, notice: "L'offre a été détruit correctement." }
             format.json { head :no_content }
             format.js
         end

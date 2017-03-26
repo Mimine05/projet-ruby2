@@ -1,5 +1,6 @@
 class FtusController < ApplicationController
     before_action :set_ftu, only: [:show, :edit, :update, :destroy]
+    authorize_resource
 
     # GET /ftus
     # GET /ftus.json

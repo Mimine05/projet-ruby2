@@ -17,13 +17,15 @@
         <tr>
             <td><%= experience.name %></td>
             <td><%= link_to 'Afficher', experience, class: 'btn btn-warning' %></td>
+            <% if current_user.role == 'Admin' %>
             <td><%= link_to 'Editer', edit_experience_path(experience), class: 'btn btn-info' %></td>
-            <td><%= link_to 'Supprimer', experience, method: :delete, remote: true, class: 'btn btn-danger' %></td>
+            <td><%= link_to 'Supprimer', experience, method: :delete, class: 'btn btn-danger' %></td>
+            <% end %>
         </tr>
         <% end %>
     </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Nouvelle expérience', new_experience_path, class: 'btn btn-success' %>
+<% end %>

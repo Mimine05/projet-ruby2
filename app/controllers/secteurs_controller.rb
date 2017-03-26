@@ -1,6 +1,7 @@
 class SecteursController < ApplicationController
   before_action :set_secteur, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /secteurs
   # GET /secteurs.json
   def index
@@ -41,6 +42,10 @@ class SecteursController < ApplicationController
   # PATCH/PUT /secteurs/1
   # PATCH/PUT /secteurs/1.json
   def update
+    @user = current_user
+        
+    @secteur.stes.where(user_id: @user.id).first.update(name: params[:name] )
+        
     respond_to do |format|
       if @secteur.update(secteur_params)
         format.html { redirect_to @secteur, notice: "Le secteur d'activité a été mis à jour correctement." }

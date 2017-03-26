@@ -16,13 +16,15 @@
         <td><%= ftu.annee %></td>
         <td><%= ftu.description %></td>
         <td><%= link_to 'Show', ftu, class: 'btn btn-warning' %></td>
+        <% if current_user.role == 'Admin' %>
         <td><%= link_to 'Edit', edit_ftu_path(ftu), class: 'btn btn-info' %></td>
         <td><%= link_to 'Destroy', ftu, method: :delete, remote: true, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
+<% if current_user.role == 'Admin' %>
 <%= link_to 'Nouvelle association', new_ftu_path, class: 'btn btn-success' %>
+<% end %>
