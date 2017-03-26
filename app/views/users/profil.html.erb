@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
-<% if @formations.exists? && @experiences.exists? && @interets.exists? %>
-<% else %>
-    <div class="alert alert-warning">
-        <strong><%= current_user.username %></strong> pensez à compléter tout <a href="<% users_profiluser_path %>" class="alert-link">votre profil</a> pour plus de visibilité !
-    </div>
+
+<% if user_signed_in? %>
+    <% if profil_complet %>
+    <% else %>
+        <div class="alert alert-warning">
+            <strong><%= current_user.username %></strong> pensez à compléter tout <a href="<%= users_profiluser_path %>" class="alert-link">votre profil</a> pour plus de visibilité !
+        </div>
+    <% end %>
 <% end %>
 
 <table class="table">
@@ -114,7 +117,9 @@
 
 
 <% if is_entreprise %>
+<% if @secteurs.exists? || @offres.exists? %>
     <h3>Mon secteur d'actvité :</h3>
+    <% if @secteurs.exists? %>
     <table class="table">
         <thead>
             <tr>
@@ -125,15 +130,21 @@
                 <td></td>
             </tr>
         </thead>
-        <tbody class="renderUserSecteurList">
-            <%= render partial: 'userSecteurlist' , locals: {user: @user} %>
+        <tbody>
+            <% @user.secteurs.each do |secteur| %>
+            <tr>
+                <td><%= secteur.name %></td>
+                <td><%= secteur.stes.where(user_id: @user.id).first.name %></td>
+            </tr>
+            <% end %>
         </tbody>
     </table>
-    <% @secteurs.each do |s| %>
-        <%= link_to "Ajouter "+s.name.to_s, {controller: "users", action: "addsecteur", secteur_id: s.id} ,remote: true, class: 'btn btn-default' %>
+    <% else %>
+        <%= @user.username %> n'a pas de secteurs d'activités à afficher ou n'a pas complété son profil.
     <% end %>
 
     <h3>Mes offres :</h3>
+    <% if @offres.exists? %>
     <table class="table">
         <thead>
             <tr>
@@ -144,13 +155,21 @@
                 <td></td>
             </tr>
         </thead>
-        <tbody class="renderUserOffreList">
-            <%= render partial: 'userOffrelist' , locals: {user: @user} %>
+        <tbody>
+            <% @user.offres.each do |offre| %>
+            <tr>
+                <td><%= offre.name %></td>
+                <td><%= offre.otes.where(user_id: @user.id).first.description %></td>
+            </tr>
+            <% end %>
         </tbody>
     </table>
-    <% @offres.each do |o| %>
-        <%= link_to "Ajouter "+o.description.to_o, {controller: "users", action: "addoffre", offre_id: o.id} ,remote: true, class: 'btn btn-default' %>
+    <% else %>
+        <%= @user.username %> n'a pas d'offres à afficher.
     <% end %>
+<% else %>
+    <%= @user.username %> n'a pas complété son profil.
+<% end %>
 <% end %>
 
 

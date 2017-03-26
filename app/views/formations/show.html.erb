@@ -9,7 +9,7 @@
 <% @user.each do |user| %>
     <tr>
         <td><%= user.username %></td>
-        <td><%= link_to 'Afficher', {controller: "users", action: "profil", user_id: user.id}, class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Afficher', {controller: "users", action: "profiluser", user_id: user.id}, class: 'btn btn-warning' %></td>
     </tr>
 <% end %>
 <br><br>

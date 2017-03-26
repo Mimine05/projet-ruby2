@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-    <% if @formations.exists? && @experiences.exists? && @interets.exists? %>
+    <% if profil_complet %>
     <% else %>
-        <div class="alert alert-warning">
-            <strong><%= @user.username %></strong> pensez à compléter tout <a href="<% users_profiluser_path %>" class="alert-link">votre profil</a> pour plus de visibilité !
-        </div>
+            <div class="alert alert-warning">
+                <strong><%= @user.username %></strong> pensez à compléter tout <a href="<%= users_profiluser_path %>" class="alert-link">votre profil</a> pour plus de visibilité !
+            </div>
     <% end %>
 <% end %>
 
@@ -41,6 +41,7 @@
                     <% @entreprises.each do |user| %>
                     <tr>
                         <td><%= user.username %></td>
+                        <td><%= user.offres.count %> offre(s) proposée(s)</td>
                         <td><%= link_to 'Afficher', {controller: "users", action: "profil", user_id: user.id}, class: 'btn btn-warning' %></td>
                     </tr>
                     <% end %>

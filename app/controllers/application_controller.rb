@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
         else
             redirect_to root_url
         end
-    end
-    
+    end    
 
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) do |user_params|
